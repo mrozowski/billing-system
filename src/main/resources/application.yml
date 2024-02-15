@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:24851/sp_task
+    username: sp_task
+    password: sp_task

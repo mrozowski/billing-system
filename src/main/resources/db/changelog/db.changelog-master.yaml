@@ -1,0 +1,107 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.0.0
+      author: smrozowski
+      changes:
+        - createTable:
+            tableName: school
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: hour_price
+                  type: integer
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 1.0.0.1
+      author: smrozowski
+      changes:
+        - createTable:
+            tableName: parent
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: firstname
+                  type: varchar(50)
+              - column:
+                  name: lastname
+                  type: varchar(50)
+
+  - changeSet:
+      id: 1.0.0.2
+      author: smrozowski
+      changes:
+        - createTable:
+            tableName: child
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: firstname
+                  type: varchar(50)
+              - column:
+                  name: lastname
+                  type: varchar(50)
+              - column:
+                  name: parent_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fd_child_parent
+                    references: parent(id)
+              - column:
+                  name: school_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fd_child_school
+                    references: school(id)
+
+  - changeSet:
+      id: 1.0.0.3
+      author: smrozowski
+      changes:
+        - createTable:
+            tableName: attendance
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: child_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fd_attendance_child
+                    references: child(id)
+              - column:
+                  name: entry_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: exit_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
