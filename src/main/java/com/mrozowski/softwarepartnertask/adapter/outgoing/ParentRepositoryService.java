@@ -11,9 +11,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 class ParentRepositoryService implements ParentRepository {
 
+  private final JpaParentRepository jpaParentRepository;
+  private final RepositoryMapper repositoryMapper;
 
   @Override
   public Optional<Parent> findParentById(long id) {
-    return Optional.empty();
+    return jpaParentRepository.findFirstById(id).map(repositoryMapper::entityToParent);
   }
 }
+
