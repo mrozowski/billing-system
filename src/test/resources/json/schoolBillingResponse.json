@@ -1,0 +1,48 @@
+{
+  "startDate": "2024-02-01T00:00:00Z",
+  "endDate": "2024-03-01T00:00:00Z",
+  "billingSubject": {
+    "id": 1,
+    "name": "SchoolOfRock",
+    "totalCost": 2250,
+    "parents": [
+      {
+        "id": 1,
+        "firstname": "John",
+        "lastname": "Kowalski",
+        "totalCost": 1500,
+        "children": [
+          {
+            "id": 1,
+            "firstname": "Marek",
+            "lastname": "Kowalski",
+            "totalCost": 1000,
+            "numberOfHours": 19
+          },
+          {
+            "id": 2,
+            "firstname": "Elżbieta",
+            "lastname": "Kowalska",
+            "totalCost": 500,
+            "numberOfHours": 12
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "firstname": "Janusz",
+        "lastname": "Smith",
+        "totalCost": 750,
+        "children": [
+          {
+            "id": 3,
+            "firstname": "Alice",
+            "lastname": "Smith",
+            "totalCost": 750,
+            "numberOfHours": 18
+          }
+        ]
+      }
+    ]
+  }
+}

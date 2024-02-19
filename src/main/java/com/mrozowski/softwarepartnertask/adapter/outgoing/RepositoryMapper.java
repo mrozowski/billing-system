@@ -10,6 +10,10 @@ import java.util.List;
 @Component
 class RepositoryMapper {
 
+  School entityToSchool(SchoolEntity entity){
+    return new School(entity.getId(), entity.getName(), entity.getHourPrice());
+  }
+
   Parent entityToParent(ParentEntity entity) {
     return Parent.builder()
         .id(entity.getId())
@@ -28,11 +32,11 @@ class RepositoryMapper {
         .build();
   }
 
-  private static List<Parent.Child> toChildList(List<ChildEntity> children) {
-    return children.stream().map(RepositoryMapper::toChild).toList();
+  private List<Parent.Child> toChildList(List<ChildEntity> children) {
+    return children.stream().map(this::toChild).toList();
   }
 
-  private static Parent.Child toChild(ChildEntity childEntity) {
+  Parent.Child toChild(ChildEntity childEntity) {
     return Parent.Child.builder()
         .id(childEntity.getId())
         .firstname(childEntity.getFirstname())
