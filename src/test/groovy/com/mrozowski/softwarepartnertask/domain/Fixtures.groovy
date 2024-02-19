@@ -1,9 +1,6 @@
 package com.mrozowski.softwarepartnertask.domain
 
-import com.mrozowski.softwarepartnertask.domain.model.Attendance
-import com.mrozowski.softwarepartnertask.domain.model.CalculationResult
-import com.mrozowski.softwarepartnertask.domain.model.Parent
-import com.mrozowski.softwarepartnertask.domain.model.School
+import com.mrozowski.softwarepartnertask.domain.model.*
 
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
@@ -37,6 +34,30 @@ class Fixtures {
       .firstname(PARENT_FIST_NAME)
       .lastname(PARENT_LAST_NAME)
       .children([CHILD])
+      .build()
+
+  static def CHILD_BILLING = ParentBilling.ChildBilling.builder()
+      .id(CHILD_ID)
+      .firstname(CHILD_FIRST_NAME)
+      .lastname(PARENT_LAST_NAME)
+      .payedHours(TOTAL_PAYED_HOURS)
+      .totalSpendHours(TOTAL_SPEND_HOURS)
+      .totalCostInCents(TOTAL_COST)
+      .build()
+
+  static def PARENT_BILLING = ParentBilling.builder()
+      .id(PARENT_ID)
+      .firstname(PARENT_FIST_NAME)
+      .lastname(PARENT_LAST_NAME)
+      .totalCostInCents(TOTAL_COST)
+      .children([CHILD_BILLING])
+      .build()
+
+  static def SCHOOL_BILLING = SchoolBilling.builder()
+      .id(PARENT_ID)
+      .name(SCHOOL_NAME)
+      .totalCostInCents(TOTAL_COST)
+      .parents([PARENT_BILLING])
       .build()
 
 

@@ -12,10 +12,10 @@ class BillingServiceSpec extends Specification {
   def parentRepository = Mock(ParentRepository)
   def schoolRepository = Mock(SchoolRepository)
   def attendanceRepository = Mock(AttendanceRepository)
-  def costCalculatorService = Mock(CostCalculatorService)
+  def billingCreator = Mock(BillingCreator)
 
   @Subject
-  def underTest = new BillingService(schoolRepository, parentRepository, attendanceRepository, costCalculatorService)
+  def underTest = new BillingService(schoolRepository, parentRepository, attendanceRepository, billingCreator)
 
   def 'should create billing for school'(){
     given:
@@ -29,7 +29,8 @@ class BillingServiceSpec extends Specification {
     1 * schoolRepository.findById(Fixtures.SCHOOL_ID) >> Optional.of(Fixtures.SCHOOL)
     1 * parentRepository.findAllParentsBySchoolId(Fixtures.SCHOOL_ID) >> [Fixtures.PARENT]
     1 * attendanceRepository.findByDateAndChildIds([Fixtures.CHILD_ID], Fixtures.START_DATE, Fixtures.END_DATE) >> attendanceList
-    1 * costCalculatorService.calculate(attendanceList, Fixtures.HOUR_PRICE_IN_CENT) >> Fixtures.CALCULATION_RESULT
+    1 * billingCreator.createParentBilling(Fixtures.PARENT, attendanceList) >> Fixtures.PARENT_BILLING
+    1 * billingCreator.createSchoolBilling(Fixtures.SCHOOL, [Fixtures.PARENT_BILLING]) >> Fixtures.SCHOOL_BILLING
 
     result.startDate() == Fixtures.START_DATE
     result.endDate() == Fixtures.END_DATE
@@ -53,7 +54,7 @@ class BillingServiceSpec extends Specification {
     then:
     1 * parentRepository.findParentById(Fixtures.PARENT_ID) >> Optional.of(Fixtures.PARENT)
     1 * attendanceRepository.findByDateAndChildIds([Fixtures.CHILD_ID], Fixtures.START_DATE, Fixtures.END_DATE) >> attendanceList
-    1 * costCalculatorService.calculate(attendanceList, Fixtures.HOUR_PRICE_IN_CENT) >> Fixtures.CALCULATION_RESULT
+    1 * billingCreator.createParentBilling(Fixtures.PARENT, attendanceList) >> Fixtures.PARENT_BILLING
 
     result.startDate() == Fixtures.START_DATE
     result.endDate() == Fixtures.END_DATE
