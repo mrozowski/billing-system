@@ -4,27 +4,29 @@
   "billingSubject": {
     "id": 1,
     "name": "SchoolOfRock",
-    "totalCost": 2250,
+    "totalCostInCents": 2250,
     "parents": [
       {
         "id": 1,
         "firstname": "John",
         "lastname": "Kowalski",
-        "totalCost": 1500,
+        "totalCostInCents": 1500,
         "children": [
           {
             "id": 1,
             "firstname": "Marek",
             "lastname": "Kowalski",
-            "totalCost": 1000,
-            "numberOfHours": 19
+            "totalCostInCents": 1000,
+            "totalSpendHours": 19,
+            "payedHours": 4
           },
           {
             "id": 2,
             "firstname": "Elżbieta",
             "lastname": "Kowalska",
-            "totalCost": 500,
-            "numberOfHours": 12
+            "totalCostInCents": 500,
+            "totalSpendHours": 12,
+            "payedHours": 2
           }
         ]
       },
@@ -32,14 +34,15 @@
         "id": 2,
         "firstname": "Janusz",
         "lastname": "Smith",
-        "totalCost": 750,
+        "totalCostInCents": 750,
         "children": [
           {
             "id": 3,
             "firstname": "Alice",
             "lastname": "Smith",
-            "totalCost": 750,
-            "numberOfHours": 18
+            "totalCostInCents": 750,
+            "totalSpendHours": 18,
+            "payedHours": 3
           }
         ]
       }

@@ -5,21 +5,23 @@
     "id": 1,
     "firstname": "John",
     "lastname": "Kowalski",
-    "totalCost": 1500,
+    "totalCostInCents": 1500,
     "children": [
       {
         "id": 1,
         "firstname": "Marek",
         "lastname": "Kowalski",
-        "totalCost": 1000,
-        "numberOfHours": 19
+        "totalCostInCents": 1000,
+        "totalSpendHours": 19,
+        "payedHours": 4
       },
       {
         "id": 2,
         "firstname": "Elżbieta",
         "lastname": "Kowalska",
-        "totalCost": 500,
-        "numberOfHours": 12
+        "totalCostInCents": 500,
+        "totalSpendHours": 12,
+        "payedHours": 2
       }
     ]
   }

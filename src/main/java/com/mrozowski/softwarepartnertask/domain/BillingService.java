@@ -36,7 +36,7 @@ class BillingService {
         .id(school.id())
         .name(school.name())
         .parents(parentBillingList)
-        .totalCost(getTotalParentsCost(parentBillingList))
+        .totalCostInCents(getTotalParentsCost(parentBillingList))
         .build();
     return new Billing<>(command.startDate(), command.endDate(), schoolBilling);
   }
@@ -62,16 +62,16 @@ class BillingService {
         .firstname(parent.firstname())
         .lastname(parent.lastname())
         .children(childBillingList)
-        .totalCost(getTotalChildrenCost(childBillingList))
+        .totalCostInCents(getTotalChildrenCost(childBillingList))
         .build();
   }
 
   private static long getTotalChildrenCost(List<ParentBilling.ChildBilling> childBillingList) {
-    return childBillingList.stream().mapToLong(ParentBilling.ChildBilling::totalCost).sum();
+    return childBillingList.stream().mapToLong(ParentBilling.ChildBilling::totalCostInCents).sum();
   }
 
   private static long getTotalParentsCost(List<ParentBilling> parentBillingList) {
-    return parentBillingList.stream().mapToLong(ParentBilling::totalCost).sum();
+    return parentBillingList.stream().mapToLong(ParentBilling::totalCostInCents).sum();
   }
 
   private List<ParentBilling.ChildBilling> createChildBillingList(
@@ -88,8 +88,9 @@ class BillingService {
         .id(child.id())
         .firstname(child.firstname())
         .lastname(child.lastName())
-        .numberOfHours(result.totalSpendHours())
-        .totalCost(result.totalCost())
+        .totalCostInCents(result.totalCost())
+        .totalSpendHours(result.totalSpendHours())
+        .payedHours(result.payedHours())
         .build();
   }
 

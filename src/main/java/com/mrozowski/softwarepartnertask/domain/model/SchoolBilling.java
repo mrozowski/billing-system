@@ -7,7 +7,7 @@ import java.util.List;
 @Builder
 public record SchoolBilling(long id,
                             String name,
-                            long totalCost,
+                            long totalCostInCents,
                             List<ParentBilling> parents) {
 
 }

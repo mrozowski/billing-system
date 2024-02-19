@@ -36,7 +36,7 @@ class BillingServiceSpec extends Specification {
     with(result.billingSubject()){
       it.id() == Fixtures.SCHOOL_ID
       it.name() == Fixtures.SCHOOL_NAME
-      it.totalCost() == Fixtures.TOTAL_COST
+      it.totalCostInCents() == Fixtures.TOTAL_COST
       it.parents().size() == 1
       it.parents().first().children().size() == 1
     }
@@ -59,13 +59,14 @@ class BillingServiceSpec extends Specification {
     result.endDate() == Fixtures.END_DATE
     with(result.billingSubject()) {
       it.id() == Fixtures.PARENT_ID
-      it.totalCost() == Fixtures.TOTAL_COST
+      it.totalCostInCents() == Fixtures.TOTAL_COST
 
       with(it.children().first()) {
         it.id() == Fixtures.CHILD_ID
         it.firstname() == Fixtures.CHILD_FIRST_NAME
         it.lastname() == Fixtures.PARENT_LAST_NAME
-        it.totalCost() == Fixtures.TOTAL_COST
+        it.totalCostInCents() == Fixtures.TOTAL_COST
+        it.payedHours() == Fixtures.TOTAL_PAYED_HOURS
       }
     }
   }

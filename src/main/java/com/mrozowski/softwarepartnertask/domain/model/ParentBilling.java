@@ -8,10 +8,11 @@ import java.util.List;
 public record ParentBilling(long id,
                             String firstname,
                             String lastname,
-                            long totalCost,
+                            long totalCostInCents,
                             List<ChildBilling> children) {
 
   @Builder
-  public record ChildBilling(long id, String firstname, String lastname, long totalCost, int numberOfHours) {
+  public record ChildBilling(
+      long id, String firstname, String lastname, long totalCostInCents, int totalSpendHours, int payedHours) {
   }
 }
