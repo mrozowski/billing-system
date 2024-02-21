@@ -1,12 +1,12 @@
-# Billing system for Kindergarden
+# Billing system for Kindergarten
 
-Simple billing system made as job interview assigment.
+Simple billing system made as job interview assignment.
 The application features two endpoints for calculating monthly parent billing and monthly school billing. These calculations are based on hour price and the duration children spend at school.
 Additionally, there is a period of no-fee time during which children can stay at no cost.
 
 The project uses **DDD (Domain-Driven Design)** and **Hexagonal Architecture** to ensure a clear separation of concerns. This helps with decoupling domain logic from external dependencies.
 
-**Technologie used**
+**Technologies used**
 * Java 17
 * Spring Boot 3.2
 * Docker
@@ -21,9 +21,9 @@ The project uses **DDD (Domain-Driven Design)** and **Hexagonal Architecture** t
 * Java 17
 * Docker
 
-1. Inside project run following command to start postgres service `docker-compose up -d`
+1. Inside the project run the following command to start postgres service `docker-compose up -d`
 2. You can run Spring Boot app using your IDE
-3. Before manual testing you can fill database with test data using below sql script:
+3. Before manual testing you can fill a database with test data using below sql script:
 ``` sql
 INSERT INTO parent(firstname, lastname)
 VALUES ('John', 'Kowalski'),
